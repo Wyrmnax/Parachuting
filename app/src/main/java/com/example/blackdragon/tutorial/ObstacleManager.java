@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ObstacleManager {
 
     //higher index = lower on scree = higher y value
-    private ArrayList<Obstacle> obstacles;
+    private ArrayList<IObstacle> obstacles;
     private int playerGap;
     private int obstacleGap;
     private int obstacleHeight;
@@ -37,7 +37,7 @@ public class ObstacleManager {
     }
 
     public boolean playerCollide (RectPlayer player){
-        for(Obstacle ob: obstacles) {
+        for(IObstacle ob: obstacles) {
             if (ob.playerCollide(player)) {
                 return true;
             }
@@ -51,7 +51,7 @@ public class ObstacleManager {
         int currY = 12*Constants.SCREEN_HEIGHT /4;
         while(currY > Constants.SCREEN_HEIGHT){
             int xStart = (int)(Math.random() * (Constants.SCREEN_WIDHT - playerGap));
-            obstacles.add(new Obstacle(obstacleHeight,color, xStart,currY,playerGap));
+            obstacles.add(new ObstacleAirplane(obstacleHeight,color, xStart,currY,playerGap));
             currY -=  obstacleHeight + obstacleGap;
         }
 
@@ -65,8 +65,9 @@ public class ObstacleManager {
         float speed = (float)(Math.sqrt(1 + (startTime - initTime)/2000.0))* Constants.SCREEN_HEIGHT/(10000.0f);
         float negSpeed = 0f - speed;
 
-        for(Obstacle ob:obstacles){
+        for(IObstacle ob:obstacles){
             ob.incrementY(negSpeed * elapsedTime);
+            ob.incrementX(5);
         }
         if(obstacles.get(obstacles.size()-1).getRectangle().bottom <= 0){
             int xStart = (int)(Math.random() * (Constants.SCREEN_WIDHT - playerGap));
@@ -78,7 +79,7 @@ public class ObstacleManager {
     }
 
     public void draw(Canvas canvas){
-        for(Obstacle ob : obstacles)
+        for(IObstacle ob : obstacles)
             ob.draw(canvas);
         Paint paint = new Paint();
         paint.setTextSize(100);

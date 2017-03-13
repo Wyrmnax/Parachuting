@@ -8,7 +8,7 @@ import android.graphics.Rect;
  * Created by BlackDragon on 08/03/2017.
  */
 
-public class Obstacle implements IGameObject {
+public class Obstacle implements IObstacle {
 
     private Rect rectangle;
     private Rect rectangle2;
@@ -26,6 +26,11 @@ public class Obstacle implements IGameObject {
 
         rectangle2.top += y;
         rectangle2.bottom +=y;
+    }
+
+    @Override
+    public void incrementX(float y) {
+
     }
 
     public  Obstacle(int rectHeight, int color, int startX, int startY, int playerGap){

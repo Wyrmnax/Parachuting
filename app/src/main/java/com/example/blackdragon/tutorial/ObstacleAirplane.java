@@ -9,7 +9,7 @@ import android.graphics.Rect;
  * Created by BlackDragon on 12/03/2017.
  */
 
-public class ObstacleAirplane implements IGameObject {
+public class ObstacleAirplane implements IObstacle {
 
     private Rect rectangle;
     private int color;
