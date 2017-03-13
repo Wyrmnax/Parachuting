@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Parachuting</string>
+    <string name="NEWGAME">New Game</string>
+    <string name="GameOver">Game Over</string>
+</resources>
