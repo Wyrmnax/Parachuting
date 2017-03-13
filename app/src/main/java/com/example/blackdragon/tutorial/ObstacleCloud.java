@@ -9,7 +9,7 @@ import android.graphics.Rect;
  * Created by BlackDragon on 12/03/2017.
  */
 
-public class ObstacleAirplane implements IObstacle {
+public class ObstacleCloud implements IObstacle {
 
     private Rect rectangle;
     private int color;
@@ -30,11 +30,10 @@ public class ObstacleAirplane implements IObstacle {
         rectangle.right +=x;
     }
 
-    public  ObstacleAirplane(int rectHeight, int color, int startX, int startY, int playerGap){
-        this.color = Color.BLUE;
-        this.startX = Constants.SCREEN_WIDHT;
-
-        rectangle = new Rect(0,startY, 200, startY + rectHeight);
+    public  ObstacleCloud(int rectHeight, int color, int startX, int startY, int playerGap){
+        this.color = Color.GREEN;
+        this.startX = ((int)(Math.random()*1000) * Constants.SCREEN_WIDHT)/1000;
+        rectangle = new Rect(startX,startY, startX + 200, startY + rectHeight);
     }
 
     public boolean playerCollide (RectPlayer player){
@@ -55,12 +54,10 @@ public class ObstacleAirplane implements IObstacle {
 
     @Override
     public void move() {
-        this.incrementX(5);
     }
 
     @Override
     public boolean gameEndOnonHit() {
-        return true;
-
+        return false;
     }
 }

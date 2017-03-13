@@ -56,4 +56,14 @@ public class Obstacle implements IObstacle {
     public void update() {
 
     }
+
+    @Override
+    public void move() {
+
+    }
+
+    @Override
+    public boolean gameEndOnonHit() {
+        return true;
+    }
 }
