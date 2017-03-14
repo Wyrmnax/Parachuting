@@ -50,7 +50,7 @@ public class ObstacleManager {
 
     //create initial obstacles
     private void populateObstacles(){
-        int currY = 9*Constants.SCREEN_HEIGHT /4;
+        int currY = 12*Constants.SCREEN_HEIGHT /4;
         while(currY > Constants.SCREEN_HEIGHT){
             int xStart = (int)(Math.random() * (Constants.SCREEN_WIDHT - playerGap));
             obstacles.add(new ObstacleCloud(obstacleHeight,color, xStart,currY,playerGap));
@@ -77,17 +77,19 @@ public class ObstacleManager {
             obstacles.remove(obstacles.size() -1);
             score ++;
         }
+
+
     }
 
     private IObstacle generateRandomObstacle(int xStart, int yStart)
     {
         switch (rnd.nextInt(3)) {
             case 0:
-                return new ObstacleRocket(obstacleHeight, color, xStart, yStart, playerGap);
+                return new ObstacleCloud(obstacleHeight, color, xStart, yStart, playerGap);
             case 1:
                 return new ObstacleRocket(obstacleHeight, color, xStart, yStart, playerGap);
             case 2:
-                return new ObstacleRocket(obstacleHeight, color, xStart, yStart, playerGap);
+                return new ObstacleAirplane(obstacleHeight, color, xStart, yStart, playerGap);
             default:
                 return new ObstacleRocket(obstacleHeight, color, xStart, yStart, playerGap);
         }

@@ -60,6 +60,6 @@ public class ObstacleRocket implements IObstacle {
 
     @Override
     public boolean gameEndOnHit() {
-        return false;
+        return true;
     }
 }
