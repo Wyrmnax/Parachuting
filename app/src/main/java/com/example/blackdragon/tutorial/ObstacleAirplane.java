@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
+import java.util.Random;
+
 /**
  * Created by BlackDragon on 12/03/2017.
  */
@@ -15,6 +17,9 @@ public class ObstacleAirplane implements IObstacle {
     private int color;
     private int startX;
     private int playerGap;
+    Random rnd = new Random();
+    private int moveDirection;
+    private int moveSpeedDivider;
 
     public Rect getRectangle() {
         return rectangle;
@@ -33,8 +38,15 @@ public class ObstacleAirplane implements IObstacle {
     public  ObstacleAirplane(int rectHeight, int color, int startX, int startY, int playerGap){
         this.color = Color.BLUE;
         this.startX = Constants.SCREEN_WIDHT;
+        this.moveDirection = rnd.nextInt(2);
+        this.moveSpeedDivider = rnd.nextInt(200) + 100;
+        if (moveDirection == 0) {
+            rectangle = new Rect(0, startY, 200, startY + rectHeight);
+        }
+        else{
+            rectangle = new Rect(Constants.SCREEN_WIDHT-200, startY, Constants.SCREEN_WIDHT, startY + rectHeight);
+        }
 
-        rectangle = new Rect(0,startY, 200, startY + rectHeight);
     }
 
     public boolean playerCollide (RectPlayer player){
@@ -55,11 +67,14 @@ public class ObstacleAirplane implements IObstacle {
 
     @Override
     public void move() {
-        this.incrementX(5);
+        if(moveDirection == 0)
+            this.incrementX(Constants.SCREEN_WIDHT/moveSpeedDivider);
+        else
+            this.incrementX(-Constants.SCREEN_WIDHT/moveSpeedDivider);
     }
 
     @Override
-    public boolean gameEndOnonHit() {
+    public boolean gameEndOnHit() {
         return true;
 
     }

@@ -15,5 +15,5 @@ public interface IObstacle {
         void draw(Canvas canvas);
         void update();
         void move();
-        boolean gameEndOnonHit();
+        boolean gameEndOnHit();
 }
