@@ -30,7 +30,7 @@ public class ObstacleCloud implements IObstacle {
         rectangle.right +=x;
     }
 
-    public  ObstacleCloud(int rectHeight, int color, int startX, int startY, int playerGap){
+    public  ObstacleCloud(int rectHeight, int color, int startY, int playerGap){
         this.color = Color.GREEN;
         this.startX = ((int)(Math.random()*1000) * Constants.SCREEN_WIDHT)/1000;
         rectangle = new Rect(startX,startY, startX + 200, startY + rectHeight);

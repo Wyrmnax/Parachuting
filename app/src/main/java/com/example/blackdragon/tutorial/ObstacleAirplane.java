@@ -35,17 +35,17 @@ public class ObstacleAirplane implements IObstacle {
         rectangle.right +=x;
     }
 
-    public  ObstacleAirplane(int rectHeight, int color, int startX, int startY, int playerGap){
+    public  ObstacleAirplane(int rectHeight, int color, int startY, int playerGap){
         this.color = Color.BLUE;
-        this.startX = Constants.SCREEN_WIDHT;
         this.moveDirection = rnd.nextInt(2);
         this.moveSpeedDivider = rnd.nextInt(200) + 100;
         if (moveDirection == 0) {
-            rectangle = new Rect(0, startY, 200, startY + rectHeight);
+            this.startX = - rnd.nextInt(400);
         }
         else{
-            rectangle = new Rect(Constants.SCREEN_WIDHT-200, startY, Constants.SCREEN_WIDHT, startY + rectHeight);
+            this.startX = rnd.nextInt(400)+Constants.SCREEN_WIDHT;
         }
+        rectangle = new Rect(startX, startY, startX +200, startY + rectHeight);
 
     }
 

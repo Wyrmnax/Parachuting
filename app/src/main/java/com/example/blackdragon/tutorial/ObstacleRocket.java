@@ -30,9 +30,9 @@ public class ObstacleRocket implements IObstacle {
         rectangle.right +=x;
     }
 
-    public ObstacleRocket(int rectHeight, int color, int startX, int startY, int playerGap){
+    public ObstacleRocket(int rectHeight, int color, int startY, int playerGap){
         this.color = Color.RED;
-        //this.startX = Constants.SCREEN_WIDHT;
+        this.startX = (int)(Math.random() * (Constants.SCREEN_WIDHT - playerGap));
 
         rectangle = new Rect(startX, startY, startX+ 50, startY + 300);
     }

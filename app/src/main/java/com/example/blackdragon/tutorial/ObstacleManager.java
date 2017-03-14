@@ -53,7 +53,7 @@ public class ObstacleManager {
         int currY = 12*Constants.SCREEN_HEIGHT /4;
         while(currY > Constants.SCREEN_HEIGHT){
             int xStart = (int)(Math.random() * (Constants.SCREEN_WIDHT - playerGap));
-            obstacles.add(new ObstacleCloud(obstacleHeight,color, xStart,currY,playerGap));
+            obstacles.add(new ObstacleCloud(obstacleHeight,color,currY,playerGap));
             currY -=  obstacleHeight + obstacleGap + rnd.nextInt(700);
         }
     }
@@ -71,9 +71,8 @@ public class ObstacleManager {
             ob.move();
         }
         if(obstacles.get(obstacles.size()-1).getRectangle().bottom <= 0){
-            int xStart = (int)(Math.random() * (Constants.SCREEN_WIDHT - playerGap));
             int yStart = (obstacles.get(0).getRectangle().top + obstacleHeight + obstacleGap)+ rnd.nextInt(700);
-            obstacles.add(0, generateRandomObstacle(xStart, yStart));
+            obstacles.add(0, generateRandomObstacle(yStart));
             obstacles.remove(obstacles.size() -1);
             score ++;
         }
@@ -81,17 +80,17 @@ public class ObstacleManager {
 
     }
 
-    private IObstacle generateRandomObstacle(int xStart, int yStart)
+    private IObstacle generateRandomObstacle(int yStart)
     {
         switch (rnd.nextInt(3)) {
             case 0:
-                return new ObstacleCloud(obstacleHeight, color, xStart, yStart, playerGap);
+                return new ObstacleCloud(obstacleHeight, color, yStart, playerGap);
             case 1:
-                return new ObstacleRocket(obstacleHeight, color, xStart, yStart, playerGap);
+                return new ObstacleRocket(obstacleHeight, color, yStart, playerGap);
             case 2:
-                return new ObstacleAirplane(obstacleHeight, color, xStart, yStart, playerGap);
+                return new ObstacleAirplane(obstacleHeight, color, yStart, playerGap);
             default:
-                return new ObstacleRocket(obstacleHeight, color, xStart, yStart, playerGap);
+                return new ObstacleRocket(obstacleHeight, color, yStart, playerGap);
         }
     }
 
