@@ -1,10 +1,7 @@
 package com.example.blackdragon.tutorial;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
@@ -51,7 +48,7 @@ public class ObstacleAirplane implements IObstacle {
             this.startX = - rnd.nextInt(400);
         }
         else{
-            this.startX = rnd.nextInt(400)+Constants.SCREEN_WIDHT;
+            this.startX = rnd.nextInt(400)+Constants.SCREEN_WIDTH;
         }
         rectangle = new Rect(startX, startY, startX +200, startY + rectHeight);
 
@@ -76,9 +73,9 @@ public class ObstacleAirplane implements IObstacle {
     @Override
     public void move() {
         if(moveDirection == 0)
-            this.incrementX(Constants.SCREEN_WIDHT/moveSpeedDivider);
+            this.incrementX(Constants.SCREEN_WIDTH /moveSpeedDivider);
         else
-            this.incrementX(-Constants.SCREEN_WIDHT/moveSpeedDivider);
+            this.incrementX(-Constants.SCREEN_WIDTH /moveSpeedDivider);
     }
 
     @Override

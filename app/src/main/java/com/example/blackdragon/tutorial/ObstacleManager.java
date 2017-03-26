@@ -53,7 +53,7 @@ public class ObstacleManager {
     private void populateObstacles(){
         int currY = 12*Constants.SCREEN_HEIGHT /4;
         while(currY > Constants.SCREEN_HEIGHT){
-            int xStart = (int)(Math.random() * (Constants.SCREEN_WIDHT - playerGap));
+            int xStart = (int)(Math.random() * (Constants.SCREEN_WIDTH - playerGap));
             obstacles.add(new ObstacleCloud(obstacleHeight,color,currY,playerGap));
             currY -=  obstacleHeight + obstacleGap + rnd.nextInt(700);
         }
@@ -73,7 +73,7 @@ public class ObstacleManager {
                 ob.incrementY(negSpeed * elapsedTime);
             }
             ob.move();
-            if (ob.getClass() == InitialAirplane.class && ob.getLeft() > Constants.SCREEN_WIDHT/2)
+            if (ob.getClass() == InitialAirplane.class && ob.getLeft() > Constants.SCREEN_WIDTH /2)
             {
                 movingDown = true;
             }

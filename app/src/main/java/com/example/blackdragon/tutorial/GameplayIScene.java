@@ -28,7 +28,7 @@ public class GameplayIScene implements IScene {
 
     public GameplayIScene(){
         player = new RectPlayer(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
-        playerPoint = new Point(Constants.SCREEN_WIDHT/2, 1*Constants.SCREEN_HEIGHT /4);
+        playerPoint = new Point(Constants.SCREEN_WIDTH /2, 1*Constants.SCREEN_HEIGHT /4);
         player.update(playerPoint);
 
         obstacleManager = new ObstacleManager(400, 350, 75, Color.BLACK);
@@ -39,7 +39,7 @@ public class GameplayIScene implements IScene {
     }
 
     public void reset(){
-        playerPoint = new Point(Constants.SCREEN_WIDHT/2, 1*Constants.SCREEN_HEIGHT /4);
+        playerPoint = new Point(Constants.SCREEN_WIDTH /2, 1*Constants.SCREEN_HEIGHT /4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(400, 350, 75, Color.BLACK);
         movingPlayer = false;
@@ -99,7 +99,7 @@ public class GameplayIScene implements IScene {
                 float pitch = orientationData.getOrientation()[1] - orientationData.getStartOrientation()[1];
                 float roll = orientationData.getOrientation()[2] - orientationData.getStartOrientation()[2];
 
-                float xSpeed = 2 * roll * Constants.SCREEN_WIDHT/1000f;
+                float xSpeed = 2 * roll * Constants.SCREEN_WIDTH /1000f;
                 float ySpeed = pitch * Constants.SCREEN_HEIGHT/1000f;
 
                 playerPoint.x += Math.abs(xSpeed*elapsedTime) > 5 ? xSpeed*elapsedTime : 0;
@@ -108,8 +108,8 @@ public class GameplayIScene implements IScene {
 
             if(playerPoint.x < 0)
                 playerPoint.x = 0;
-            else if (playerPoint.x > Constants.SCREEN_WIDHT)
-                playerPoint.x = Constants.SCREEN_WIDHT;
+            else if (playerPoint.x > Constants.SCREEN_WIDTH)
+                playerPoint.x = Constants.SCREEN_WIDTH;
             if(playerPoint.y < 0)
                 playerPoint.y = 0;
             else if (playerPoint.y > Constants.SCREEN_HEIGHT)

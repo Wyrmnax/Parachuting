@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 
@@ -38,8 +37,8 @@ public class ObstacleCloud implements IObstacle {
 
     public  ObstacleCloud(int rectHeight, int color, int startY, int playerGap){
         this.color = Color.GREEN;
-        this.startX = ((int)(Math.random()*1000) * Constants.SCREEN_WIDHT)/1000;
-        rectangle = new Rect(startX,startY, startX + 200, startY + rectHeight);
+        this.startX = ((int)(Math.random()*1000) * Constants.SCREEN_WIDTH)/1000;
+        rectangle = new Rect(startX,startY, startX + Constants.CLOUD_WIDTH, startY + Constants.CLOUD_HEIGHT);
 
         cloudPoint = new Point(startX +100, startY + (rectHeight/2));
 

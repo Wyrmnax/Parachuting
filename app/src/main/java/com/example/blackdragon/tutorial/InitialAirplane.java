@@ -1,10 +1,7 @@
 package com.example.blackdragon.tutorial;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
@@ -66,7 +63,7 @@ public class InitialAirplane implements IObstacle{
 
         @Override
         public void move() {
-                this.incrementX(Constants.SCREEN_WIDHT/100);
+                this.incrementX(Constants.SCREEN_WIDTH /100);
         }
 
         @Override

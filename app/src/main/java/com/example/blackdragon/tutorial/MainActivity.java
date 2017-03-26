@@ -16,8 +16,11 @@ public class MainActivity extends Activity {
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-        Constants.SCREEN_WIDHT = dm.widthPixels;
+        Constants.SCREEN_WIDTH = dm.widthPixels;
         Constants.SCREEN_HEIGHT = dm.heightPixels;
+
+        Constants.CLOUD_WIDTH = Constants.SCREEN_WIDTH /4;
+        Constants.CLOUD_HEIGHT = Constants.SCREEN_HEIGHT /10;
 
         setContentView(new GamePanel(this));
     }
