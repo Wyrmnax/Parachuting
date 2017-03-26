@@ -1,5 +1,7 @@
 package com.example.blackdragon.tutorial;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,7 +16,9 @@ public class ObstacleCloud implements IObstacle {
     private Rect rectangle;
     private int color;
     private int startX;
-    private int playerGap;
+
+    private Animation idle;
+    private AnimationManager animManager;
 
     public Rect getRectangle() {
         return rectangle;
@@ -59,5 +63,10 @@ public class ObstacleCloud implements IObstacle {
     @Override
     public boolean gameEndOnHit() {
         return false;
+    }
+
+    @Override
+    public int getLeft() {
+        return 0;
     }
 }

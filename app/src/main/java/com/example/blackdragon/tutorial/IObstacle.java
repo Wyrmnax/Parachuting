@@ -16,4 +16,5 @@ public interface IObstacle {
         void update();
         void move();
         boolean gameEndOnHit();
+        int getLeft();
 }

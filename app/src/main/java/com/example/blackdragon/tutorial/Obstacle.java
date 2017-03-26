@@ -66,4 +66,9 @@ public class Obstacle implements IObstacle {
     public boolean gameEndOnHit() {
         return true;
     }
+
+    @Override
+    public int getLeft() {
+        return 0;
+    }
 }

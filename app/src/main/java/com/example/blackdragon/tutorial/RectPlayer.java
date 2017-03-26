@@ -17,8 +17,6 @@ public class RectPlayer implements IGameObject {
     private int color;
 
     private Animation idle;
-    private Animation walkRight;
-    private Animation walkLeft;
     private AnimationManager animManager;
 
     public Rect getRectangle(){
@@ -30,21 +28,12 @@ public class RectPlayer implements IGameObject {
         this.color = color;
 
         BitmapFactory bf = new BitmapFactory();
-        Bitmap idleImg = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue);
-        Bitmap walk1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_walk1);
-        Bitmap walk2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_walk2);
+        Bitmap idleImg1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.paraquedista1);
+        Bitmap idleImg2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.paraquedista2);
 
-        idle = new Animation (new Bitmap[]{idleImg}, 2);
-        walkRight = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
+        idle = new Animation (new Bitmap[]{idleImg1, idleImg2}, 0.5f);
 
-        Matrix m = new Matrix();
-        m.preScale(-1, 1);
-        walk1 = Bitmap.createBitmap(walk1, 0, 0, walk1.getWidth(), walk1.getHeight(), m, false);
-        walk2 = Bitmap.createBitmap(walk2, 0, 0, walk2.getWidth(), walk2.getHeight(), m, false);
-
-        walkLeft = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
-
-        animManager = new AnimationManager(new Animation[]{idle, walkRight, walkLeft});
+        animManager = new AnimationManager(new Animation[]{idle});
     }
 
     @Override
@@ -66,11 +55,6 @@ public class RectPlayer implements IGameObject {
         rectangle.set(point.x - rectangle.width()/2, point.y - rectangle.height()/2, point.x + rectangle.width()/2, point.y + rectangle.height()/2);
 
         int state = 0;
-
-        if(rectangle.left - oldLeft > 5)
-            state = 1;
-        else if (rectangle.left - oldLeft < -5)
-            state = 2;
 
         animManager.playAnim(state);
         animManager.update();

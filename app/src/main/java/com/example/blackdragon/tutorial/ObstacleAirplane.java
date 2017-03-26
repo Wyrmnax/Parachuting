@@ -1,7 +1,10 @@
 package com.example.blackdragon.tutorial;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
@@ -20,6 +23,11 @@ public class ObstacleAirplane implements IObstacle {
     Random rnd = new Random();
     private int moveDirection;
     private int moveSpeedDivider;
+
+    private Animation idle;
+    private Animation walkRight;
+    private Animation walkLeft;
+    private AnimationManager animManager;
 
     public Rect getRectangle() {
         return rectangle;
@@ -77,5 +85,10 @@ public class ObstacleAirplane implements IObstacle {
     public boolean gameEndOnHit() {
         return true;
 
+    }
+
+    @Override
+    public int getLeft() {
+        return 0;
     }
 }
