@@ -22,7 +22,6 @@ public class InitialAirplane implements IObstacle{
         Random rnd = new Random();
 
         private Animation idle;
-        private Animation walkRight;
         private AnimationManager animManager;
 
         public Rect getRectangle() {

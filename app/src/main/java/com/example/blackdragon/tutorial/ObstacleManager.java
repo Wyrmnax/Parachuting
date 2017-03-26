@@ -77,6 +77,7 @@ public class ObstacleManager {
             {
                 movingDown = true;
             }
+            ob.update();
         }
         if(obstacles.get(obstacles.size()-1).getRectangle().bottom <= 0){
             int yStart = (obstacles.get(0).getRectangle().top + obstacleHeight + obstacleGap)+ rnd.nextInt(700);
