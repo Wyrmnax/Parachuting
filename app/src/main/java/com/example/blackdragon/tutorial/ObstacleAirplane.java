@@ -50,7 +50,7 @@ public class ObstacleAirplane implements IObstacle {
         else{
             this.startX = rnd.nextInt(400)+Constants.SCREEN_WIDTH;
         }
-        rectangle = new Rect(startX, startY, startX +200, startY + rectHeight);
+        rectangle = new Rect(startX, startY, startX + Constants.AIRPLANE_WIDTH, startY + Constants.AIRPLANE_HEIGHT);
 
     }
 

@@ -34,7 +34,7 @@ public class ObstacleRocket implements IObstacle {
         this.color = Color.RED;
         this.startX = (int)(Math.random() * (Constants.SCREEN_WIDTH - playerGap));
 
-        rectangle = new Rect(startX, startY, startX+ 50, startY + 300);
+        rectangle = new Rect(startX, startY, startX+ Constants.ROCKET_WIDTH, startY + Constants.ROCKET_HEIGHT);
     }
 
     public boolean playerCollide (RectPlayer player){

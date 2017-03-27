@@ -21,6 +21,15 @@ public class MainActivity extends Activity {
 
         Constants.CLOUD_WIDTH = Constants.SCREEN_WIDTH /4;
         Constants.CLOUD_HEIGHT = Constants.SCREEN_HEIGHT /10;
+		
+		Constants.AIRPLANE_WIDTH = Constants.SCREEN_WIDTH /4;
+        Constants.AIRPLANE_HEIGHT = Constants.SCREEN_HEIGHT /10;
+		
+		Constants.ROCKET_WIDTH = Constants.SCREEN_WIDTH /8;
+        Constants.ROCKET_HEIGHT = Constants.SCREEN_HEIGHT /6;
+		
+		Constants.PARACHUTIST_HEIGHT = Constants.SCREEN_WIDTH /6;
+        Constants.PARACHUTIST_WIDTH = Constants.SCREEN_HEIGHT /13;
 
         setContentView(new GamePanel(this));
     }

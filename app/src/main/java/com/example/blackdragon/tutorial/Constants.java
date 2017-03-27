@@ -14,6 +14,15 @@ public class Constants {
 
     public static int CLOUD_HEIGHT;
     public static int CLOUD_WIDTH;
+	
+	public static int ROCKET_HEIGHT;
+    public static int ROCKET_WIDTH;
+	
+	public static int AIRPLANE_HEIGHT;
+    public static int AIRPLANE_WIDTH;
+	
+	public static int PARACHUTIST_HEIGHT;
+    public static int PARACHUTIST_WIDTH;
 
     public static long INIT_TIME;
 }
