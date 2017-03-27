@@ -51,6 +51,21 @@ public class ObstacleAirplane implements IObstacle {
             this.startX = rnd.nextInt(400)+Constants.SCREEN_WIDTH;
         }
         rectangle = new Rect(startX, startY, startX + Constants.AIRPLANE_WIDTH, startY + Constants.AIRPLANE_HEIGHT);
+		
+		BitmapFactory bf = new BitmapFactory();
+        Bitmap Img1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.aviao1);
+        Bitmap Img2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.aviao2);
+
+        walkLeft = new Animation (new Bitmap[]{Img1, Img2}, 0.5f);
+		
+		Matrix m = new Matrix();
+        m.preScale(-1, 1);
+        Img1 = Bitmap.createBitmap(Img1, 0, 0, Img1.getWidth(), Img1.getHeight(), m, false);
+        Img2 = Bitmap.createBitmap(Img2, 0, 0, Img2.getWidth(), Img2.getHeight(), m, false);
+
+        walkRight = new Animation(new Bitmap[]{Img1, Img2}, 0.5f);
+
+        animManager = new AnimationManager(new Animation[]{walkLeft,walkRight});
 
     }
 
@@ -60,14 +75,16 @@ public class ObstacleAirplane implements IObstacle {
 
     @Override
     public void draw(Canvas canvas) {
-        Paint paint = new Paint();
-        paint.setColor(color);
-        canvas.drawRect(rectangle, paint);
+        //Paint paint = new Paint();
+        //paint.setColor(color);
+        //canvas.drawRect(rectangle, paint);
+		animManager.draw(canvas, rectangle);
     }
 
     @Override
     public void update() {
-
+		animManager.playAnim(moveDirection);
+        animManager.update();
     }
 
     @Override
