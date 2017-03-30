@@ -25,8 +25,8 @@ public class MainActivity extends Activity {
 		Constants.AIRPLANE_WIDTH = Constants.SCREEN_WIDTH /4;
         Constants.AIRPLANE_HEIGHT = Constants.SCREEN_HEIGHT /10;
 		
-		Constants.ROCKET_WIDTH = Constants.SCREEN_WIDTH /8;
-        Constants.ROCKET_HEIGHT = Constants.SCREEN_HEIGHT /6;
+		Constants.ROCKET_WIDTH = Constants.SCREEN_WIDTH /10;
+        Constants.ROCKET_HEIGHT = Constants.SCREEN_HEIGHT /8;
 		
 		Constants.PARACHUTIST_HEIGHT = Constants.SCREEN_WIDTH /6;
         Constants.PARACHUTIST_WIDTH = Constants.SCREEN_HEIGHT /13;
