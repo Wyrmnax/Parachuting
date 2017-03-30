@@ -1,7 +1,10 @@
 package com.example.blackdragon.tutorial;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
@@ -14,7 +17,9 @@ public class ObstacleRocket implements IObstacle {
     private Rect rectangle;
     private int color;
     private int startX;
-    private int playerGap;
+
+    private Animation moveUp;
+    private AnimationManager animManager;
 
     public Rect getRectangle() {
         return rectangle;
@@ -35,6 +40,14 @@ public class ObstacleRocket implements IObstacle {
         this.startX = (int)(Math.random() * (Constants.SCREEN_WIDTH - playerGap));
 
         rectangle = new Rect(startX, startY, startX+ Constants.ROCKET_WIDTH, startY + Constants.ROCKET_HEIGHT);
+
+        BitmapFactory bf = new BitmapFactory();
+        Bitmap Img1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.foguete1);
+        Bitmap Img2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.foguete2);
+
+        moveUp = new Animation (new Bitmap[]{Img1, Img2}, 0.5f);
+
+        animManager = new AnimationManager(new Animation[]{moveUp});
     }
 
     public boolean playerCollide (RectPlayer player){
@@ -43,14 +56,13 @@ public class ObstacleRocket implements IObstacle {
 
     @Override
     public void draw(Canvas canvas) {
-        Paint paint = new Paint();
-        paint.setColor(color);
-        canvas.drawRect(rectangle, paint);
+        animManager.draw(canvas, rectangle);
     }
 
     @Override
     public void update() {
-
+        animManager.playAnim(0);
+        animManager.update();
     }
 
     @Override

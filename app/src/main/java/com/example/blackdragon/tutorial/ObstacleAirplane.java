@@ -17,14 +17,11 @@ import java.util.Random;
 public class ObstacleAirplane implements IObstacle {
 
     private Rect rectangle;
-    private int color;
     private int startX;
-    private int playerGap;
     Random rnd = new Random();
     private int moveDirection;
     private int moveSpeedDivider;
 
-    private Animation idle;
     private Animation walkRight;
     private Animation walkLeft;
     private AnimationManager animManager;
@@ -44,7 +41,6 @@ public class ObstacleAirplane implements IObstacle {
     }
 
     public  ObstacleAirplane(int rectHeight, int color, int startY, int playerGap){
-        this.color = Color.BLUE;
         this.moveDirection = rnd.nextInt(2);
         this.moveSpeedDivider = rnd.nextInt(200) + 100;
         if (moveDirection == 0) {
@@ -78,9 +74,6 @@ public class ObstacleAirplane implements IObstacle {
 
     @Override
     public void draw(Canvas canvas) {
-        //Paint paint = new Paint();
-        //paint.setColor(color);
-        //canvas.drawRect(rectangle, paint);
 		animManager.draw(canvas, rectangle);
     }
 
