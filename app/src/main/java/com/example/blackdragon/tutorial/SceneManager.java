@@ -13,20 +13,20 @@ public class SceneManager {
     private ArrayList<IScene> IScenes = new ArrayList<>();
     public static int ACTIVE_SCENE;
 
-    public SceneManager(){
+    public SceneManager() {
         ACTIVE_SCENE = 0;
         IScenes.add(new GameplayIScene());
     }
 
-    public void receiveTouch(MotionEvent event){
+    public void receiveTouch(MotionEvent event) {
         IScenes.get(ACTIVE_SCENE).receiveTouch(event);
     }
 
-    public void update(){
+    public void update() {
         IScenes.get(ACTIVE_SCENE).update();
     }
 
-    public void draw(Canvas canvas){
+    public void draw(Canvas canvas) {
         IScenes.get(ACTIVE_SCENE).draw(canvas);
     }
 

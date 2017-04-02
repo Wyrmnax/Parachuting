@@ -16,8 +16,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private SceneManager manager;
 
 
-    public GamePanel (Context context) {
-        super (context);
+    public GamePanel(Context context) {
+        super(context);
 
         getHolder().addCallback(this);
 
@@ -28,15 +28,15 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         manager = new SceneManager();
 
         setFocusable(true);
-        }
+    }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
-        }
+    }
 
     @Override
-    public void surfaceCreated(SurfaceHolder holder){
+    public void surfaceCreated(SurfaceHolder holder) {
         thread = new MainThread(getHolder(), this);
         Constants.INIT_TIME = System.currentTimeMillis();
 
@@ -45,30 +45,32 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public void surfaceDestroyed(SurfaceHolder holder){
+    public void surfaceDestroyed(SurfaceHolder holder) {
         boolean retry = true;
-        while(retry){
+        while (retry) {
             try {
                 thread.setRunning(false);
                 thread.join();
 
-            } catch (Exception e) {e.printStackTrace();}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @Override
-    public boolean onTouchEvent (MotionEvent event){
+    public boolean onTouchEvent(MotionEvent event) {
         manager.receiveTouch(event);
         return true;
         //return super.onTouchEvent(event);
     }
 
-    public void update(){
+    public void update() {
         manager.update();
     }
 
     @Override
-    public void draw (Canvas canvas){
+    public void draw(Canvas canvas) {
         super.draw(canvas);
 
         manager.draw(canvas);

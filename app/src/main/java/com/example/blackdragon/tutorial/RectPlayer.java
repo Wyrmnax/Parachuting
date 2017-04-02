@@ -19,11 +19,11 @@ public class RectPlayer implements IGameObject {
     private Animation idle;
     private AnimationManager animManager;
 
-    public Rect getRectangle(){
+    public Rect getRectangle() {
         return rectangle;
     }
 
-    public RectPlayer(Rect rectangle, int color){
+    public RectPlayer(Rect rectangle, int color) {
         this.rectangle = rectangle;
         this.color = color;
 
@@ -31,25 +31,25 @@ public class RectPlayer implements IGameObject {
         Bitmap idleImg1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.paraquedista1);
         Bitmap idleImg2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.paraquedista2);
 
-        idle = new Animation (new Bitmap[]{idleImg1, idleImg2}, 0.5f);
+        idle = new Animation(new Bitmap[]{idleImg1, idleImg2}, 0.5f);
 
         animManager = new AnimationManager(new Animation[]{idle});
     }
 
     @Override
-    public void draw(Canvas canvas){
+    public void draw(Canvas canvas) {
         animManager.draw(canvas, rectangle);
     }
 
     @Override
     public void update() {
-            animManager.update();
+        animManager.update();
     }
 
-    public void update(Point point){
+    public void update(Point point) {
         float oldLeft = rectangle.left;
 
-        rectangle.set(point.x - rectangle.width()/2, point.y - rectangle.height()/2, point.x + rectangle.width()/2, point.y + rectangle.height()/2);
+        rectangle.set(point.x - rectangle.width() / 2, point.y - rectangle.height() / 2, point.x + rectangle.width() / 2, point.y + rectangle.height() / 2);
 
         int state = 0;
 

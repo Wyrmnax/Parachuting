@@ -25,32 +25,32 @@ public class ObstacleRocket implements IObstacle {
         return rectangle;
     }
 
-    public void incrementY(float y){
+    public void incrementY(float y) {
         rectangle.top += y;
-        rectangle.bottom +=y;
+        rectangle.bottom += y;
     }
 
-    public void incrementX(float x){
+    public void incrementX(float x) {
         rectangle.left += x;
-        rectangle.right +=x;
+        rectangle.right += x;
     }
 
-    public ObstacleRocket(int rectHeight, int color, int startY, int playerGap){
+    public ObstacleRocket(int rectHeight, int color, int startY, int playerGap) {
         this.color = Color.RED;
-        this.startX = (int)(Math.random() * (Constants.SCREEN_WIDTH - playerGap));
+        this.startX = (int) (Math.random() * (Constants.SCREEN_WIDTH - playerGap));
 
-        rectangle = new Rect(startX, startY, startX+ Constants.ROCKET_WIDTH, startY + Constants.ROCKET_HEIGHT);
+        rectangle = new Rect(startX, startY, startX + Constants.ROCKET_WIDTH, startY + Constants.ROCKET_HEIGHT);
 
         BitmapFactory bf = new BitmapFactory();
         Bitmap Img1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.foguete1);
         Bitmap Img2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.foguete2);
 
-        moveUp = new Animation (new Bitmap[]{Img1, Img2}, 0.5f);
+        moveUp = new Animation(new Bitmap[]{Img1, Img2}, 0.5f);
 
         animManager = new AnimationManager(new Animation[]{moveUp});
     }
 
-    public boolean playerCollide (RectPlayer player){
+    public boolean playerCollide(RectPlayer player) {
         return Rect.intersects(rectangle, player.getRectangle());
     }
 

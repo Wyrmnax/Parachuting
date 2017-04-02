@@ -25,32 +25,32 @@ public class ObstacleCloud implements IObstacle {
         return rectangle;
     }
 
-    public void incrementY(float y){
+    public void incrementY(float y) {
         rectangle.top += y;
-        rectangle.bottom +=y;
+        rectangle.bottom += y;
     }
 
-    public void incrementX(float x){
+    public void incrementX(float x) {
         rectangle.left += x;
-        rectangle.right +=x;
+        rectangle.right += x;
     }
 
-    public  ObstacleCloud(int rectHeight, int color, int startY, int playerGap){
+    public ObstacleCloud(int rectHeight, int color, int startY, int playerGap) {
         this.color = Color.GREEN;
-        this.startX = ((int)(Math.random()*1000) * Constants.SCREEN_WIDTH)/1000;
-        rectangle = new Rect(startX,startY, startX + Constants.CLOUD_WIDTH, startY + Constants.CLOUD_HEIGHT);
+        this.startX = ((int) (Math.random() * 1000) * Constants.SCREEN_WIDTH) / 1000;
+        rectangle = new Rect(startX, startY, startX + Constants.CLOUD_WIDTH, startY + Constants.CLOUD_HEIGHT);
 
-        cloudPoint = new Point(startX +100, startY + (rectHeight/2));
+        cloudPoint = new Point(startX + 100, startY + (rectHeight / 2));
 
         BitmapFactory bf = new BitmapFactory();
         Bitmap idleImg1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.nuvemgrande1);
 
-        idle = new Animation (new Bitmap[]{idleImg1}, 2f);
+        idle = new Animation(new Bitmap[]{idleImg1}, 2f);
 
         animManager = new AnimationManager(new Animation[]{idle});
     }
 
-    public boolean playerCollide (RectPlayer player){
+    public boolean playerCollide(RectPlayer player) {
         return Rect.intersects(rectangle, player.getRectangle());
     }
 
@@ -68,10 +68,10 @@ public class ObstacleCloud implements IObstacle {
         animManager.update();
     }
 
-    public void update(Point point){
+    public void update(Point point) {
         float oldLeft = rectangle.left;
 
-        rectangle.set(point.x - rectangle.width()/2, point.y - rectangle.height()/2, point.x + rectangle.width()/2, point.y + rectangle.height()/2);
+        rectangle.set(point.x - rectangle.width() / 2, point.y - rectangle.height() / 2, point.x + rectangle.width() / 2, point.y + rectangle.height() / 2);
 
         int state = 0;
 

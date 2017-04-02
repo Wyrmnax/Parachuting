@@ -28,24 +28,23 @@ public class ObstacleDuckFlight implements IObstacle {
         return rectangle;
     }
 
-    public void incrementY(float y){
+    public void incrementY(float y) {
         rectangle.top += y;
-        rectangle.bottom +=y;
+        rectangle.bottom += y;
     }
 
-    public void incrementX(float x){
+    public void incrementX(float x) {
         rectangle.left += x;
-        rectangle.right +=x;
+        rectangle.right += x;
     }
 
-    public  ObstacleDuckFlight(int rectHeight, int color, int startY, int playerGap){
+    public ObstacleDuckFlight(int rectHeight, int color, int startY, int playerGap) {
         this.moveDirection = rnd.nextInt(2);
         this.moveSpeedDivider = rnd.nextInt(200) + 100;
         if (moveDirection == 0) {
-            this.startX = - rnd.nextInt(400);
-        }
-        else{
-            this.startX = rnd.nextInt(400)+Constants.SCREEN_WIDTH;
+            this.startX = -rnd.nextInt(400);
+        } else {
+            this.startX = rnd.nextInt(400) + Constants.SCREEN_WIDTH;
         }
         rectangle = new Rect(startX, startY, startX + Constants.DUCK_WIDTH, startY + Constants.DUCK_HEIGHT);
 
@@ -53,7 +52,7 @@ public class ObstacleDuckFlight implements IObstacle {
         Bitmap Img1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.patos1);
         Bitmap Img2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.patos2);
 
-        walkRight = new Animation (new Bitmap[]{Img1, Img2}, 0.5f);
+        walkRight = new Animation(new Bitmap[]{Img1, Img2}, 0.5f);
 
         Matrix m = new Matrix();
         m.preScale(-1, 1);
@@ -62,11 +61,11 @@ public class ObstacleDuckFlight implements IObstacle {
 
         walkLeft = new Animation(new Bitmap[]{Img1, Img2}, 0.5f);
 
-        animManager = new AnimationManager(new Animation[]{walkLeft,walkRight});
+        animManager = new AnimationManager(new Animation[]{walkLeft, walkRight});
 
     }
 
-    public boolean playerCollide (RectPlayer player){
+    public boolean playerCollide(RectPlayer player) {
         return Rect.intersects(rectangle, player.getRectangle());
     }
 
@@ -83,10 +82,10 @@ public class ObstacleDuckFlight implements IObstacle {
 
     @Override
     public void move() {
-        if(moveDirection == 0)
-            this.incrementX(Constants.SCREEN_WIDTH /moveSpeedDivider);
+        if (moveDirection == 0)
+            this.incrementX(Constants.SCREEN_WIDTH / moveSpeedDivider);
         else
-            this.incrementX(-Constants.SCREEN_WIDTH /moveSpeedDivider);
+            this.incrementX(-Constants.SCREEN_WIDTH / moveSpeedDivider);
     }
 
     @Override

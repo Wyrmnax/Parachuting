@@ -15,11 +15,11 @@ public class MainThread extends Thread {
     private boolean running;
     public static Canvas canvas;
 
-    public void setRunning(boolean running){
+    public void setRunning(boolean running) {
         this.running = running;
     }
 
-    public MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel){
+    public MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel) {
         super();
         this.surfaceHolder = surfaceHolder;
         this.gamePanel = gamePanel;
@@ -28,53 +28,49 @@ public class MainThread extends Thread {
     @Override
     public void run() {
         long starttime;
-        long timeMillis = 1000/MAX_FPS;
+        long timeMillis = 1000 / MAX_FPS;
         long waitTime;
         int framecount = 0;
         int totalTime = 0;
-        long targetTime = 1000/MAX_FPS;
+        long targetTime = 1000 / MAX_FPS;
 
-        while (running){
+        while (running) {
             starttime = System.nanoTime();
             canvas = null;
 
-            try{
+            try {
                 canvas = this.surfaceHolder.lockCanvas();
-                synchronized (surfaceHolder){
+                synchronized (surfaceHolder) {
                     this.gamePanel.update();
                     this.gamePanel.draw(canvas);
                 }
 
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-            }
-            finally {
-                if(canvas != null){
-                    try{
+            } finally {
+                if (canvas != null) {
+                    try {
                         surfaceHolder.unlockCanvasAndPost(canvas);
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             }
-            timeMillis = (System.nanoTime() - starttime)/1000000;
+            timeMillis = (System.nanoTime() - starttime) / 1000000;
             waitTime = targetTime - timeMillis;
 
-            try{
+            try {
                 if (waitTime > 0)
                     this.sleep(waitTime);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
             totalTime += System.nanoTime() - starttime;
-            framecount ++;
+            framecount++;
 
-            if(framecount == MAX_FPS){
-                averageFPS = 1000/((totalTime/framecount)/1000000);
+            if (framecount == MAX_FPS) {
+                averageFPS = 1000 / ((totalTime / framecount) / 1000000);
                 framecount = 0;
                 totalTime = 0;
                 System.out.print(averageFPS);

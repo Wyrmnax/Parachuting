@@ -8,13 +8,21 @@ import android.graphics.Rect;
  */
 
 public interface IObstacle {
-        Rect getRectangle();
-        void incrementY(float y);
-        void incrementX(float y);
-        boolean playerCollide (RectPlayer player);
-        void draw(Canvas canvas);
-        void update();
-        void move();
-        boolean gameEndOnHit();
-        int getLeft();
+    Rect getRectangle();
+
+    void incrementY(float y);
+
+    void incrementX(float y);
+
+    boolean playerCollide(RectPlayer player);
+
+    void draw(Canvas canvas);
+
+    void update();
+
+    void move();
+
+    boolean gameEndOnHit();
+
+    int getLeft();
 }
