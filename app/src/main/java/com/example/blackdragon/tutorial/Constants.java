@@ -20,6 +20,12 @@ public class Constants {
 	
 	public static int AIRPLANE_HEIGHT;
     public static int AIRPLANE_WIDTH;
+
+    public static int DUCK_HEIGHT;
+    public static int DUCK_WIDTH;
+
+    public static int DUCKFLIGHT_HEIGHT;
+    public static int DUCKFLIGHT_WIDTH;
 	
 	public static int PARACHUTIST_HEIGHT;
     public static int PARACHUTIST_WIDTH;

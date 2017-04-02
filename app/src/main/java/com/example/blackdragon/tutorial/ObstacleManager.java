@@ -91,13 +91,17 @@ public class ObstacleManager {
 
     private IObstacle generateRandomObstacle(int yStart)
     {
-        switch (rnd.nextInt(3)) {
+        switch (rnd.nextInt(5)) {
             case 0:
                 return new ObstacleCloud(obstacleHeight, color, yStart, playerGap);
             case 1:
                 return new ObstacleRocket(obstacleHeight, color, yStart, playerGap);
             case 2:
                 return new ObstacleAirplane(obstacleHeight, color, yStart, playerGap);
+            case 3:
+                return new ObstacleDuck(obstacleHeight, color, yStart, playerGap);
+            case 4:
+                return new ObstacleDuckFlight(obstacleHeight, color, yStart, playerGap);
             default:
                 return new ObstacleRocket(obstacleHeight, color, yStart, playerGap);
         }
