@@ -42,7 +42,7 @@ public class ObstacleAirplane implements IObstacle {
 
     public  ObstacleAirplane(int rectHeight, int color, int startY, int playerGap){
         this.moveDirection = rnd.nextInt(2);
-        this.moveSpeedDivider = rnd.nextInt(200) + 100;
+        this.moveSpeedDivider = rnd.nextInt(200) + 30;
         if (moveDirection == 0) {
             this.startX = - rnd.nextInt(400);
         }

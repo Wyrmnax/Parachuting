@@ -1,7 +1,10 @@
 package com.example.blackdragon.tutorial;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
@@ -37,8 +40,16 @@ public class InitialAirplane implements IObstacle{
 
         public  InitialAirplane(int rectHeight, int color, int startY, int playerGap){
             this.color = Color.BLUE;
-            this.startX = 0;
-            rectangle = new Rect(startX, startY, startX +200, startY + rectHeight);
+            this.startX = (Constants.SCREEN_WIDTH/2) - 200;
+            rectangle = new Rect(startX, startY, startX +400, startY + 200);
+
+            BitmapFactory bf = new BitmapFactory();
+            Bitmap Img1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.aviaoparaquedas1);
+            Bitmap Img2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.aviaoparaquedas2);
+
+            idle = new Animation (new Bitmap[]{Img1, Img2}, 0.5f);
+
+            animManager = new AnimationManager(new Animation[]{idle});
         }
 
         public boolean playerCollide (RectPlayer player){
@@ -47,13 +58,13 @@ public class InitialAirplane implements IObstacle{
 
         @Override
         public void draw(Canvas canvas) {
-            Paint paint = new Paint();
-            paint.setColor(color);
-            canvas.drawRect(rectangle, paint);
+            animManager.draw(canvas, rectangle);
         }
 
         @Override
         public void update() {
+            animManager.playAnim(0);
+            animManager.update();
         }
 
         public int getLeft()

@@ -38,15 +38,12 @@ public class RectPlayer implements IGameObject {
 
     @Override
     public void draw(Canvas canvas){
-        //Paint paint = new Paint();
-        //paint.setColor(color);
-        //canvas.drawRect(rectangle,paint );
         animManager.draw(canvas, rectangle);
     }
 
     @Override
     public void update() {
-        animManager.update();
+            animManager.update();
     }
 
     public void update(Point point){

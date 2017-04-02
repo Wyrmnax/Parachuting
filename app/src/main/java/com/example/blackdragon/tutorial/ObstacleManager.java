@@ -19,7 +19,7 @@ public class ObstacleManager {
     private int obstacleGap;
     private int obstacleHeight;
     private int color;
-    private boolean movingDown = false;
+    public boolean movingDown = false;
 
     private long startTime;
     private long initTime;
@@ -43,7 +43,7 @@ public class ObstacleManager {
     public boolean playerCollide (RectPlayer player){
         for(IObstacle ob: obstacles) {
             if (ob.playerCollide(player)) {
-                //return ob.gameEndOnHit();
+                return ob.gameEndOnHit();
             }
         }
         return false;
@@ -57,7 +57,7 @@ public class ObstacleManager {
             obstacles.add(new ObstacleCloud(obstacleHeight,color,currY,playerGap));
             currY -=  obstacleHeight + obstacleGap + rnd.nextInt(700);
         }
-        obstacles.add(new InitialAirplane(obstacleHeight,color,Constants.SCREEN_HEIGHT /4,playerGap));
+        obstacles.add(new InitialAirplane(obstacleHeight,color,(Constants.SCREEN_HEIGHT/4)-100,playerGap));
     }
 
     public void update(){
@@ -73,7 +73,7 @@ public class ObstacleManager {
                 ob.incrementY(negSpeed * elapsedTime);
             }
             ob.move();
-            if (ob.getClass() == InitialAirplane.class && ob.getLeft() > Constants.SCREEN_WIDTH /2)
+            if (ob.getClass() == InitialAirplane.class && (ob.getLeft()) + 100 > Constants.SCREEN_WIDTH /2)
             {
                 movingDown = true;
             }
