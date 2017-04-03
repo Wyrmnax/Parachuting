@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.example.blackdragon.parachuting"
+        applicationId 'blackdragon.parachuting'
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -19,6 +19,8 @@ android {
         debug {
             debuggable false
         }
+    }
+    productFlavors {
     }
 }
 
